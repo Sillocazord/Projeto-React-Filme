@@ -8,7 +8,7 @@ const Login = () => {
             <div className = "banner"></div>
             <section className = "section_login">
                 <img src={Logo} alt="Logo do Filmoteca"x />
-                <form action="">
+                <form action="" className="form_login">
                     <h1>Login</h1>
 
                      <div>

@@ -15,5 +15,21 @@
 
 /* Form de login da direita: */
 .section_login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     flex: 1;
+    background-color: #cc3f55;
+}
+.section_login img {
+    width: 180px;
+}
+
+.form_login{
+    color: white;
+}
+.form_login h1 {
+    text-transform: uppercase;
+    text-align: center;
 }
