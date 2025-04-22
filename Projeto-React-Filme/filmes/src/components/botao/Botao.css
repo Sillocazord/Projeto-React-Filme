@@ -1,0 +1,9 @@
+.botaun{
+    padding: 10px 100px;
+    border: none;
+    background-color: #73061B;
+    cursor: pointer;
+    color: white;
+    border-radius: 6px;
+    font-weight: bolder;
+}
