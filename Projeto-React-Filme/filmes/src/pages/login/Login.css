@@ -74,3 +74,13 @@
     box-shadow: 1px 4px 4px 0px #0000002b ; /*Sombreamento pras suas tags meu cria, tmj viu*/
     margin-top: 7px; /*É o responsavel pelo espaçamento entre input e label*/
 }
+
+/**RESPONSIVIDADE😑😌**/
+/*Mê dê algumas caracterticas ao partir de um tamanho da tela*/
+@media screen and (max-width: 768px){
+    /*opx ->768px*/
+    .banner{
+        /*Desaparece o banner*/
+        display: none;
+    }
+}

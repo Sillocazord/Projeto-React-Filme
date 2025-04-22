@@ -1,7 +1,9 @@
 
 import Logo from "../../assets/img/logo.svg"
 import Botao from "../../components/botao/Botao"
+import Footer from "../../components/footer/Footer"
 import "./Login.css"
+
 
 const Login = () => {
     return(
@@ -24,9 +26,11 @@ const Login = () => {
                         </div>
                     </div> 
                     <Botao/>
-                </form>
+                </form> 
             </section>
+            
         </main>
+       
     )
 }
 
