@@ -1,8 +1,16 @@
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
+import Cadastro from "../../components/cadastro/Cadastro";
+import { Fragment } from "react";
 
 const CadastroFilme = () =>{
     return(
-        <Header/>
+        <> {/*Fragment, o pai da estrutura e a forma melhor e mais segura pra não dar pau no seu codigo**/ }
+            <Header/>
+            <Cadastro/>
+            <Footer/>
+
+        </>
     )
 }
 export default CadastroFilme;

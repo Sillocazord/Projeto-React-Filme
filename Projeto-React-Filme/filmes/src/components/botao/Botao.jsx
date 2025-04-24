@@ -1,7 +1,7 @@
 import "./Botao.css"
 const Botao = () => {
     return(
-        <button className="botaun">Entrar</button> //RockBotton
+        <button className="botao">Entrar</button> //RockBotton
     )
 }
 export default Botao;

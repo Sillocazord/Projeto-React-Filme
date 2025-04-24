@@ -1,5 +1,7 @@
-.botaun{
-    padding: 10px 100px;
+.botao{
+    /* padding: 5px 100px; */
+    width: 200px;
+    height: 25px;
     border: none;
     background-color: #73061B;
     cursor: pointer;

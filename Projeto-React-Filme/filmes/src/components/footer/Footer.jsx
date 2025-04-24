@@ -1,7 +1,7 @@
 import"./Footer.css"
 const Footer = () => {
     return (
-    <footer className="footer">
+    <footer>
        <p>©2025 - Projeto Filmes SENAI - Todos os direitos reservados</p>
     </footer>
     )
