@@ -1,0 +1,43 @@
+.listagem{
+    /*retirar : header:75px, cadastro:252px, footer:40px;*/
+    min-height: calc(100vh - (75px + 252px + 40px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px;
+}
+.listagem h1{
+    text-transform: uppercase;
+}
+
+.listagem hr{
+    max-width: 300px;
+    width: 100%;
+    margin-top: 7px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #73061b;
+}
+
+.item_lista img{
+        height: 28px;
+}
+.tabela table{
+    width: 100%;
+}
+
+.tabela .cabecalho:first-child{
+    width: 100%;
+    margin-top: 35px;
+}
+
+.tabela.cabecalho :nth-child(2){
+    width: 200px;
+}
+.tabela .cabecalho th{
+    width: 100px;
+}
+
+.item_lista td{
+    padding: 20px 0 5px 0;
+}
