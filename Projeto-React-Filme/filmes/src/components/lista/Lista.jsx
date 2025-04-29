@@ -10,7 +10,7 @@ const Lista =() => {
             <div className="tabela">
                 <table>{/*TABELA/cabeçalho da tabela:*/}
                     <thead>
-                        <tr className="cabecalho"> {/*tr => table row*/}
+                        <tr className="table_cabecalho"> {/*tr => table row*/}
                             <th>Nome</th>{/*th => table head : cabeça da tabela*/}      {/*HEAD OF THE TABLE OTC ROMAN REIGNS!!🗣️🗣️🗣️🔥🔥🔥*/}
                             <th>Gênero</th>
                             <th>Editar</th>

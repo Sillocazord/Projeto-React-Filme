@@ -26,15 +26,15 @@
     width: 100%;
 }
 
-.tabela .cabecalho:first-child{
+.tabela .table_cabecalho:first-child{
     width: 100%;
     margin-top: 35px;
 }
 
-.tabela.cabecalho :nth-child(2){
+.tabela.table_cabecalho :nth-child(2){
     width: 200px;
 }
-.tabela .cabecalho th{
+.tabela .table_cabecalho th{
     width: 100px;
 }
 
