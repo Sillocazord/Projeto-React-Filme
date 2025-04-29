@@ -26,13 +26,6 @@ const Lista =(props) => {
                             <td data-cell="Excluir"><img src={Excluir} alt="Imagem de uma caixa de lixo" /></td>
                         </tr>
                         {/* <hr /> */}
-                        <tr className="item_lista">
-                            <td data-cell="Nome">Transformers</td>
-                            <td style={{display:props.visivel}} data-cell="Gênero">Ação</td>
-                            <td data-cell="Editar"><img src={Editar} alt="Imagem de uma caneta" /></td>
-                            <td data-cell="Excluir"><img src={Excluir} alt="Imagem de uma caixa de lixo" /></td>
-                        </tr>
-                        {/* <hr /> */}
                     </tbody>
 
                 </table>
