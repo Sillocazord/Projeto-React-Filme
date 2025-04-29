@@ -8,10 +8,16 @@ const CadastroFilme = () =>{
     return(
         <> {/*Fragment, o pai da estrutura e a forma melhor e mais segura pra não dar pau no seu codigo**/ }
             <Header/>
-            <Cadastro/>
-            <Lista/>
+                <main>
+                     <Cadastro
+                     tituloCadastro ="Cadastro de Filme"
+                     placeholder = "filme"
+                    />
+                    <Lista
+                    tituloLista = "Lista de Filmes"
+                    />
+                </main>
             <Footer/>
-
         </>
     )
 }

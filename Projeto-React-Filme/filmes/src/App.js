@@ -1,14 +1,12 @@
 
 import './App.css';
-import CadastroFilme from './pages/CadastroFilme/CadastroFilme';
-// import Login from "./pages/login/Login";
+import Rotas from './Routes/routes';
 
 function App() {
   return (
     <>
     {/*Chamar as paginas */}
-    {/* <Login/> */}
-    <CadastroFilme/>
+    <Rotas/>
     </>
   );
 }
