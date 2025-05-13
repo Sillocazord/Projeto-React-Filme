@@ -3,39 +3,53 @@ import Footer from "../../components/footer/Footer";
 import Lista from "../../components/lista/Lista";
 import Cadastro from "../../components/cadastro/Cadastro";
 import api from "../../Services/services";
+import Swal from "sweetalert2"
 //Importação de componentes ⬆️
 import { useEffect, useState } from "react";
 
 const CadastroGenero = () => {
     //funções ou constante são sempre criados fora do return, nunca dentro dele
     const [genero, setGenero] = useState("");
-
-    async function cadastrarGenero() {
+    function alerta (icone, mensagem){
+        const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: icone,
+                    title: mensagem
+                });
+    }
+        //try = tentar(o esperado)
+        //catch = lança a exeção  
+    async function cadastrarGenero(evt) {
         //verificar se o input está vindo vazio (roxoooo🗣️🗣️🟣🟣🔥🔥)
         //comédia romântica
-        if (genero.trim() === "") {
-            alert("O campo precisa estar preenchido") //preenche o campo ae dog😔
-        }
-        //try = tentar(o esperado)
-        //catch = lança a exeção
-        try {
-            await api.post("Genero", { nome: genero });
-            alert("Rodou meu fí, pode olhar no banco of the dados")
-            setGenero("");
+        evt.preventDefault();
+        if (genero.trim() != "") {
+            try {
+                await api.post("Genero", { nome: genero });
+                alerta("sucess", "Cadastro realizado com sucesso")
+                setGenero("");
 
-        } catch (error) {
-            alert("LOL,DEU ERRADO KKKKKKKK🫵🤣")
-            console.log(error);
-            
+            } catch (error) {
+                alerta("error", "Erro! Entre em contato com o suporte (os guri)")
+                // alert("LOL,DEU ERRADO KKKKKKKK🫵🤣")
+                // console.log(error);
+            }
+        } else {
+            // alert("O campo precisa estar preenchido") //preenche o campo ae dog😔
+            alerta("error", "Erro! Entre em contato com o suporte (os guri)")
         }
+
     };
-
-    //------------------------------------------------------------
-    //testezin (so apagar se der erro) toda vez que alguem mexer na variavel, vai receber um diferente efeito ao alterar a variavel
-    // useEffect(() => {
-    //     console.log(genero)
-    // },[genero]);
-    //------------------------------------------------------------
 
     return (
         <>
