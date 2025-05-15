@@ -11,6 +11,7 @@ const CadastroGenero = () => {
     //funções ou constante são sempre criados fora do return, nunca dentro dele
     const [genero, setGenero] = useState(""); //estate = genero (Estamos amarzenando a informação do input dentro de gênero)
     const [listaGenero, setListaGenero] = useState([]);
+    const[deletaGenero, setDeletaGenero] = useState();
     function alerta(icone, mensagem) {
         const Toast = Swal.mixin({
             toast: true,
@@ -36,7 +37,7 @@ const CadastroGenero = () => {
         if (genero.trim() != "") {
             try {
                 await api.post("Genero", { nome: genero });
-                alerta("sucess", "Cadastro realizado com sucesso")
+                alerta("success", "Cadastro realizado com sucesso")
                 setGenero("");
 
             } catch (error) {
@@ -65,12 +66,24 @@ const CadastroGenero = () => {
             console.log(error);
         }
     }
-    //inicio do teste
+    //funcao de excluir o genero
+    async function excluirGenero() {
+        try {
+           const metodo = await api.delete("genero")
+            
+        } catch (error) {
+            
+        }
+    }
+//-----------------
+
+
+
     useEffect(() => {
         listarGenero();
 
     }, [])
-    // //fim do teste
+
 
 
     return (

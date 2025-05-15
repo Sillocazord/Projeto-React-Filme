@@ -20,20 +20,20 @@ const Lista = (props) => {
 
                         <tbody> {/*tbody => corpo da tabela*/}
                             {props.lista && props.lista.length > 0 ? (
-                                props.lista.map((item, index) => (
-                                    <tr className="item_lista">
-                                    <td data-cell="Nome">YEET!</td>
-                                    <td style={{ display: props.visivel }} data-cell="Gênero">Ação</td>
-                                    <td data-cell="Editar"><img src={Editar} alt="Imagem de uma caneta" /></td>
-                                    <td data-cell="Excluir"><img src={Excluir} alt="Imagem de uma caixa de lixo" /></td>
-                                </tr>
+                                props.lista.map((item) => ( //map lista as coisas, é o responsavel por imprimir todos os itens da lista no banco de dados
+                                    <tr className="item_lista" key={item.idGenero}>
+                                        <td data-cell="Nome">{item.nome}</td>
+                                        <td style={{ display: props.visivel }} data-cell="Gênero">Ação</td>
+                                        <td data-cell="Editar"><img src={Editar} alt="Imagem de uma caneta" /></td>
+                                        <td data-cell="Excluir"><img src={Excluir} alt="Imagem de uma caixa de lixo" onClick={item.} /></td>
+                                    </tr>
                                 ))
-                                
+
                             ) :
-                            (
-                                <p>Nenhum gênero foi encontrado.</p>
-                            )
-                        }
+                                (
+                                    <p>Nenhum gênero foi encontrado.</p>
+                                )
+                            }
 
                         </tbody>
 
