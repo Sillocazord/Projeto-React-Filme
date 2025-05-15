@@ -6,12 +6,42 @@ import api from "../../Services/services";
 import Swal from "sweetalert2"
 //Importação de componentes ⬆️
 import { useEffect, useState } from "react";
+import { data } from "react-router-dom";
 
 const CadastroGenero = () => {
     //funções ou constante são sempre criados fora do return, nunca dentro dele
     const [genero, setGenero] = useState(""); //estate = genero (Estamos amarzenando a informação do input dentro de gênero)
     const [listaGenero, setListaGenero] = useState([]);
-    const[deletaGenero, setDeletaGenero] = useState();
+    const [deletaGenero, setDeletaGenero] = useState();
+    //-----------------TESTE-------------------------------
+
+
+    // const [paginaAtual, definirPagina] = useState(1)
+    // const [itensPagina, definirItens] = useState(4)
+
+    // function pagina(itens, itensPorPagina) {
+
+    //     const totalPaginas = 1;
+    //     // Função para obter os itens da página atual
+    //     function itensDaPagina() {
+    //         const inicio = (paginaAtual - 1) * itensPorPagina;
+    //         const fim = inicio + itensPorPagina;
+    //         return itens.slice(inicio, fim)
+    //     }
+    //     // Função para atualizar a página
+    //     function atualizarPagina() {
+    //         const itens = itensDaPagina();
+    //         console.log("itens da pagia", paginaAtual, ":", itens);
+
+    //     }
+
+    //     function paraPagina(pagina){
+    //         paginaAtual = pagina;
+    //         atualizarPagina();
+    //     }
+    // }
+
+    //-----------------TESTE-------------------------------
     function alerta(icone, mensagem) {
         const Toast = Swal.mixin({
             toast: true,
@@ -67,23 +97,25 @@ const CadastroGenero = () => {
         }
     }
     //funcao de excluir o genero
-    async function excluirGenero() {
+    async function excluirGenero(idGenero) {
         try {
-           const metodo = await api.delete("genero")
-            
-        } catch (error) {
-            
+            const deletador = await api.delete(`genero/${idGenero}`);
+            setDeletaGenero(deletador.data)
+            alerta("success", "deu certo pia, pode relaxar")
+        }
+        catch (error) {
+            console.log(error);
+            alerta("error", "nop, ainda")
         }
     }
-//-----------------
+    //-----------------
 
 
 
     useEffect(() => {
         listarGenero();
 
-    }, [])
-
+    }, [listarGenero])
 
 
     return (
@@ -107,7 +139,8 @@ const CadastroGenero = () => {
                     tituloLista="Lista de Gêneros"
                     visivel="none" //Apaga Genero da lista
                     //atribuiir para lista, o meu estado atual:
-                    lista = {listaGenero}
+                    lista={listaGenero}
+                    deletar={excluirGenero}
                 />
             </main>
             <Footer />
