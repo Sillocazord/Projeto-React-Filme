@@ -12,37 +12,11 @@ const CadastroGenero = () => {
     //funções ou constante são sempre criados fora do return, nunca dentro dele
     const [genero, setGenero] = useState(""); //estate = genero (Estamos amarzenando a informação do input dentro de gênero)
     const [listaGenero, setListaGenero] = useState([]);
-    const [deletaGenero, setDeletaGenero] = useState();
-    //-----------------TESTE-------------------------------
+    // const [deletaGenero, setDeletaGenero] = useState();
+    //useState = So usamos useState quando precisamos guardar uma informação que muda e o React precisa acompanhar(ex: Excluir um item de uma lista, cadastrar um item em uma lista, atualizar um item de uma lista).
 
 
-    // const [paginaAtual, definirPagina] = useState(1)
-    // const [itensPagina, definirItens] = useState(4)
-
-    // function pagina(itens, itensPorPagina) {
-
-    //     const totalPaginas = 1;
-    //     // Função para obter os itens da página atual
-    //     function itensDaPagina() {
-    //         const inicio = (paginaAtual - 1) * itensPorPagina;
-    //         const fim = inicio + itensPorPagina;
-    //         return itens.slice(inicio, fim)
-    //     }
-    //     // Função para atualizar a página
-    //     function atualizarPagina() {
-    //         const itens = itensDaPagina();
-    //         console.log("itens da pagia", paginaAtual, ":", itens);
-
-    //     }
-
-    //     function paraPagina(pagina){
-    //         paginaAtual = pagina;
-    //         atualizarPagina();
-    //     }
-    // }
-
-    //-----------------TESTE-------------------------------
-    function alerta(icone, mensagem) {
+    function alertar(icone, mensagem) {
         const Toast = Swal.mixin({
             toast: true,
             position: "top-end",
@@ -67,15 +41,16 @@ const CadastroGenero = () => {
         if (genero.trim() != "") {
             try {
                 await api.post("Genero", { nome: genero });
-                alerta("success", "Cadastro realizado com sucesso")
+                alertar("success", "Cadastrado com sucesso")
                 setGenero("");
-
+                //Atualiza a lista ao cadastrar um novo genero
+                listarGenero();
             } catch (error) {
-                alerta("error", "Erro! Entre em contato com o suporte (os guri)")
+                alertar("error", "Erro! Entre em contato com o suporte (os guri)")
             }
         } else {
             // alert("O campo precisa estar preenchido")
-            alerta("error", "Erro! Entre em contato com os guri")
+            alertar("error", "Erro! Entre em contato com os guri")
         }
 
     };
@@ -83,13 +58,7 @@ const CadastroGenero = () => {
     //função Assincrona = espera algo acontecer para depois seguir o codigo (espera um retorno da solicitação)
     async function listarGenero() { //trycat🐈😺🐈‍⬛
         try {       // setListaGenero(resposta);
-            //.data = usado para listar somente os objetos
-            //teste o codigo e seja curioso (so n seja dedin nervoooossssssu=o
-
-            //console.log(resposta.data[3]);
-            //console.log(resposta.data[3].idGenero);
-            //console.log(resposta.data[3].nome);
-
+            //.data = usado para listar somente os objetoss
             const resposta = await api.get("genero");
             setListaGenero(resposta.data)
         } catch (error) {
@@ -98,15 +67,50 @@ const CadastroGenero = () => {
     }
     //funcao de excluir o genero
     async function excluirGenero(idGenero) {
-        try {
-            const deletador = await api.delete(`genero/${idGenero}`);
-            setDeletaGenero(deletador.data)
-            alerta("success", "deu certo pia, pode relaxar")
-        }
-        catch (error) {
-            console.log(error);
-            alerta("error", "nop, ainda")
-        }
+
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Você tem certeza?",
+            text: "Esta ação é irreversivel!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Sim, deleta ae!",
+            cancelButtonText: "Não, deleta não man",
+            reverseButtons: true
+        }).then(async(result) => {
+            if (result.isConfirmed) {
+                try {
+                    await api.delete(`genero/${idGenero}`);
+                    //⬆️Interpolação X Concatenação
+                    // alertar("success", "Excluido com sucesso")
+                    listarGenero();
+                }
+                catch (error) {
+                    console.log(error);
+                }
+                swalWithBootstrapButtons.fire({
+                    title: "Deletado!",
+                    text: "Gênero deletado com sucesso",
+                    icon: "success"
+                });
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire({
+                    title: "Cancelado",
+                    text: "Seu gênero imaginario está a salvo :)",
+                    icon: "error"
+                });
+            }
+        });
+
     }
     //-----------------
 
