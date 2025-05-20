@@ -83,7 +83,7 @@ const CadastroGenero = () => {
             confirmButtonText: "Sim, deleta ae!",
             cancelButtonText: "Não, deleta não man",
             reverseButtons: true
-        }).then(async(result) => {
+        }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
                     await api.delete(`genero/${idGenero}`);
@@ -112,15 +112,40 @@ const CadastroGenero = () => {
         });
 
     }
-    //-----------------
 
+    //-----------------
+    async function editarGenero(genero) {
+        const { value: novoGenero } = await Swal.fire({
+            title: "Insira o novo nome do Gênero",
+            input: "text",
+            inputLabel: "Novo nome do gênero:",
+            //através do input value, faremos com que o input ja venha preenchido com o gênero que queremos editar
+            inputValue: genero.nome,
+            showCancelButton: true,
+            inputValidator: (value) => {
+                if (!value) {
+                    return "Você tem que escrever alguma coisa! >:(";
+                }
+            }
+        });
+        if (novoGenero) {
+             try {
+                 await api.put(`genero/${genero.idGenero}`,{nome : novoGenero});
+                 Swal.fire(`Seu gênero agora é: ${novoGenero}`);
+             } catch (error) {
+                
+             }
+            
+        }
+
+    }
 
 
     useEffect(() => {
         listarGenero();
 
-    }, [listarGenero])
-
+    }, [listaGenero])
+    //listargen
 
     return (
         <>
@@ -145,6 +170,7 @@ const CadastroGenero = () => {
                     //atribuiir para lista, o meu estado atual:
                     lista={listaGenero}
                     deletar={excluirGenero}
+                    editar={editarGenero}
                 />
             </main>
             <Footer />
