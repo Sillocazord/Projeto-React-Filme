@@ -19,7 +19,7 @@ const Lista = (props) => {
                         </thead>
 
                         <tbody> {/*tbody => corpo da tabela*/}
-                            {props.lista && props.lista.length > 0 ? (
+                            {props.lista && props.lista.length > 0 ? ( //explicadno, props.lista.length > 0 é pra verificar se há itens no banco de dados
                                 props.lista.map((item) => ( //map lista as coisas, é o responsavel por imprimir todos os itens da lista no banco de dados
                                     <tr className="item_lista" key={item.idGenero}>
                                         <td data-cell="Nome">{item.nome}</td>

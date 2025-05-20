@@ -16,23 +16,28 @@ const Cadastro = (props) => {
                         <div className="campo-cad_nome">
                             <label htmlFor="nome">Nome</label>
                             <input placeholder={`Digite o nome do ${props.placeholder}`}
-                             style={{ color: "red" }} 
-                             type="text" 
-                             name="nome" 
-                             value={props.valorInput} 
-                             //Ao mudar o input, algo acontece
-                             //Atualizar o estado do pai ao digitar
-                             //target está indo buscar o valor do "e"
-                             onChange={(e)=>props.setValorInput(e.target.value)}/>
+                                style={{ color: "red" }}
+                                type="text"
+                                name="nome"
+                                value={props.valorInput}
+                                //Ao mudar o input, algo acontece
+                                //Atualizar o estado do pai ao digitar
+                                //target está indo buscar o valor do "e"
+                                onChange={(e) => props.setValorInput(e.target.value)} />
                         </div>
 
                         <div className="campo-cad_genero" style={{ display: props.visibilidade }}>
                             <label htmlFor="genero">Genero</label>
+
                             <select style={{ color: "red" }} name="genero" id="">
-                                <option value="" disabled selected>Selecione</option>
-                                <option value="">op 1</option>
-                                <option value="">op 2</option>
-                                <option value="">op 3</option>
+                                <option value="" disabled selected>Selecione</option> 
+                                {props.lista && props.lista.length > 0 && props.lista.map((itemGenero) => (
+                                    (
+                                        <option value="">{itemGenero.nome}</option>
+
+                                    ))
+
+                                )}
                             </select>
                         </div>
 
@@ -44,7 +49,7 @@ const Cadastro = (props) => {
 
 
 
-            </section>
+            </section >
 
         </>
     )
