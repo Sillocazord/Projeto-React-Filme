@@ -21,23 +21,22 @@ const Lista = (props) => {
                         <tbody> {/*tbody => corpo da tabela*/}
                             {props.lista && props.lista.length > 0 ? ( //explicadno, props.lista.length > 0 é pra verificar se há itens no banco de dados
                                 props.lista.map((item) => ( //map lista as coisas, é o responsavel por imprimir todos os itens da lista no banco de dados
-                                    <tr className="item_lista" key={item.idGenero}>
-                                        <td data-cell="Nome">{item.nome}</td>
-                                        <td style={{ display: props.visivel }} data-cell="Gênero">Ação</td>
+                                    <tr className="item_lista" 
+                                    key={props.tipoLista == "genero" ? item.idGenero : item.idFilme}>
+                                        <td data-cell="Nome">{props.tipoLista == "genero" ? item.nome : item.titulo}</td>
+                                        <td style={{ display: props.visivel }} data-cell="Gênero">{props.tipoLista == "genero" ? item.nome : item.genero.nome}</td>
                                         <td data-cell="Editar"><img src={Editar} alt="Imagem de uma caneta" onClick={() => props.editar(item)} style={{cursor:"pointer"}} /></td>
                                         <td data-cell="Excluir"><img src={Excluir} alt="Imagem de uma caixa de lixo" onClick={() => props.deletar(item.idGenero)} style={{cursor:"pointer"}} /></td>
 
                                     </tr>
-                                    // onClick={filter((item) => item.idGenero !==)}
+
                                 ))
 
                             ) :
                                 (
                                     <p>Nenhum gênero foi encontrado.</p>
                                 )
-                            //      <button onClick={() => props.ola(item.nome)}>
-                            //     n sei véi
-                            // </button>
+
                             }
                            
 

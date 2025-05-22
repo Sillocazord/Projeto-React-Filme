@@ -169,6 +169,7 @@ const CadastroGenero = () => {
                     visivel="none" //Apaga Genero da lista
                     //atribuiir para lista, o meu estado atual:
                     lista={listaGenero}
+                    tipoLista="genero"
                     deletar={excluirGenero}
                     editar={editarGenero}
                 />

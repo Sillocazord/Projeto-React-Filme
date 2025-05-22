@@ -61,6 +61,7 @@ const CadastroFilme = () => {
 
     useEffect(() => {
         listarGenero();
+        listarFilme();
     }, [])
 
 
@@ -100,7 +101,9 @@ const CadastroFilme = () => {
                 />
                 <Lista
                     tituloLista="Lista de Filmes"
-                // lista={listaFilme}
+                    tipoLista= "filme"
+                    lista={listaFilme}
+
                 />
             </main>
             <Footer />
